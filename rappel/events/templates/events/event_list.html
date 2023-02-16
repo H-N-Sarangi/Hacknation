@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <ul>
+        {% for event in event_list %}
+            <li><div>{{event.name}} <br> {{event.description}} <br>{{event.location}}  {{event.start_date}}</div></li>
+            <img width="100px" src="{{event.image.url}}" alt="unable to load image" srcset="">
+            <a href="{% url 'events:update' pk=event.pk %}">update</a>
+            <a href="{% url 'events:delete' pk=event.pk %}">delete</a>
+
+        {% empty %}
+            <h1>No events Yet</h1>
+        {% endfor %}
+    </ul>
+{% endblock %}
